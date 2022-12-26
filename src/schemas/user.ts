@@ -20,7 +20,7 @@ export const userSchema = z.object({
     city: z.string(),
     state: z.string(),
     country: z.string(),
-    postcode: z.number(),
+    postcode: z.coerce.string(),
   }),
   login: z.object({
     uuid: z.string(),

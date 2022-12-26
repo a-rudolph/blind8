@@ -2,13 +2,10 @@ import ProfileCard from "./ProfileCard";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState } from "react";
+import { DecisionBar } from "./DecisionBar";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
-
-  const onDecision = () => {
-    queryClient.invalidateQueries(["user"]);
-  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -20,20 +17,7 @@ function App() {
           <div className="px-4 flex-1">
             <div className="flex flex-col justify-center items-center h-full">
               <ProfileCard />
-              <div className="flex gap-6 m-4">
-                <button
-                  onClick={onDecision}
-                  className="btn text-xl h-16 w-16 border border-slate-200/50"
-                >
-                  ✖️
-                </button>
-                <button
-                  onClick={onDecision}
-                  className="btn btn-primary text-xl h-16 w-16"
-                >
-                  🤍
-                </button>
-              </div>
+              <DecisionBar />
             </div>
           </div>
           <div className="p-4 shadow-sm">bottom nav</div>
