@@ -1,6 +1,6 @@
 export default async function (req, res) {
-  const res = await fetch("/public/profiles.json");
-  const profiles = await res.json();
+  const response = await fetch("/public/profiles.json");
+  const profiles = await response.json();
 
   const randomId = Math.floor(Math.random() * 10);
 
