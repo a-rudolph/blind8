@@ -15,7 +15,7 @@ export const useProfile = ({ index }: { index: number }) => {
       const res = await fetch("https://blind8-three.vercel.app/api/v1/profile");
       const data = await res.json();
 
-      const user = userSchema.parse(data.results[0]);
+      const user = userSchema.parse(data.data);
 
       return user;
     },
