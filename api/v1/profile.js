@@ -1,6 +1,7 @@
-import profiles from "../../public/profiles.json";
+export default async function (req, res) {
+  const res = await fetch("/public/profiles.json");
+  const profiles = await res.json();
 
-export default function (req, res) {
   const randomId = Math.floor(Math.random() * 10);
 
   const data = profiles[randomId];
