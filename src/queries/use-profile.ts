@@ -12,7 +12,7 @@ export const useProfile = ({ index }: { index: number }) => {
     async () => {
       if (index > 1) return null;
 
-      const res = await fetch("https://randomuser.me/api/");
+      const res = await fetch("https://blind8-three.vercel.app/api/v1/profile");
       const data = await res.json();
 
       const user = userSchema.parse(data.results[0]);
