@@ -18,8 +18,10 @@ const allowCors = (fn) => async (req, res) => {
   return await fn(req, res);
 };
 
+const BASE = "https://blind8-three.vercel.app";
+
 const handler = async (req, res) => {
-  const response = await fetch("/public/profiles.json");
+  const response = await fetch(`${BASE}/profiles.json`);
   const profiles = await response.json();
 
   const randomId = Math.floor(Math.random() * 10);
