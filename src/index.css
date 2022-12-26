@@ -13,5 +13,5 @@
 }
 
 .btn-primary {
-  @apply shadow-fuchsia-400 bg-fuchsia-500 hover:bg-fuchsia-500/80 text-white border-white/30 border;
+  @apply shadow-fuchsia-400/70 bg-fuchsia-500 hover:bg-fuchsia-500/80 text-white border-white/30 border;
 }

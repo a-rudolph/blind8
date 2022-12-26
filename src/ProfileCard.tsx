@@ -1,12 +1,18 @@
 import { DecisionBar } from "./DecisionBar";
-import { useProfile } from "./queries/profile";
+import { useProfile } from "./queries/use-profile";
+
+const animations = {
+  like: "animate-like",
+  dislike: "animate-dislike",
+} as const;
 
 export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
-  const query = useProfile();
+  const { query, onDecision, decision } = useProfile({ index });
 
   const isFirst = !index;
 
   const className = isFirst ? "relative" : "absolute top-0";
+  const animation = decision ? animations[decision] : "animate-enter";
 
   const style = {
     transform: isFirst
@@ -15,24 +21,33 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
     zIndex: 5 - index,
   } satisfies React.CSSProperties;
 
-  if (query.isLoading) return <div>Loading...</div>;
-
-  const data = query.data!;
+  const data = query.data;
 
   return (
-    <div style={style} className={"card".concat(" ", className)}>
+    <div
+      style={style}
+      className={"card".concat(" ", className, " ", animation)}
+    >
       <img
-        src={data.picture.large}
-        loading="eager"
+        src={data?.picture.large}
+        loading={isFirst ? "eager" : "lazy"}
         className="object-cover min-h-[332px] w-full rounded-md shadow-md"
       />
       <div className="text-lg py-2">
-        {data.name.first}, {data.dob.age}
+        {data?.name.first || "..."}, {data?.dob.age || "..."}
       </div>
       <div className="text-sm text-slate-600">
-        {data.location.city}, {data.location.country}
+        {data?.location.city || "..."}, {data?.location.country || "..."}
       </div>
-      <DecisionBar />
+      <DecisionBar
+        disabled={query.isFetching}
+        onLike={() => {
+          onDecision("like");
+        }}
+        onDislike={() => {
+          onDecision("dislike");
+        }}
+      />
     </div>
   );
 };

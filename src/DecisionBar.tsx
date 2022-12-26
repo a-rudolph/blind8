@@ -1,27 +1,20 @@
-import { useQueryClient } from "react-query";
-import { useProfile } from "./queries/profile";
-
-export const DecisionBar: React.FC = () => {
-  const queryClient = useQueryClient();
-
-  const { isFetching } = useProfile();
-
-  const onDecision = () => {
-    queryClient.invalidateQueries(["user"]);
-  };
-
+export const DecisionBar: React.FC<{
+  onLike: VoidFunction;
+  onDislike: VoidFunction;
+  disabled: boolean;
+}> = ({ onLike, onDislike, disabled }) => {
   return (
     <div className="flex gap-6 m-4 justify-center">
       <button
-        disabled={isFetching}
-        onClick={onDecision}
+        disabled={disabled}
+        onClick={onDislike}
         className="btn text-xl h-16 w-16 border border-slate-200/50"
       >
         ✖️
       </button>
       <button
-        disabled={isFetching}
-        onClick={onDecision}
+        disabled={disabled}
+        onClick={onLike}
         className="btn btn-primary text-xl h-16 w-16"
       >
         🤍
