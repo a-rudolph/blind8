@@ -11,7 +11,7 @@ export const DecisionBar: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-6 m-4">
+    <div className="flex gap-6 m-4 justify-center">
       <button
         disabled={isFetching}
         onClick={onDecision}

@@ -2,7 +2,6 @@ import ProfileCard from "./ProfileCard";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState } from "react";
-import { DecisionBar } from "./DecisionBar";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -16,8 +15,11 @@ function App() {
           </div>
           <div className="px-4 flex-1">
             <div className="flex flex-col justify-center items-center h-full">
-              <ProfileCard />
-              <DecisionBar />
+              <div className="relative">
+                <ProfileCard />
+                <ProfileCard index={1} />
+                <ProfileCard index={2} />
+              </div>
             </div>
           </div>
           <div className="p-4 shadow-sm">bottom nav</div>
