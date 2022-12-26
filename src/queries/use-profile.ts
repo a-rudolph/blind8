@@ -37,7 +37,7 @@ export const useProfile = ({ index }: { index: number }) => {
       queryClient.setQueryData(["user", index + 1], null);
       queryClient.invalidateQueries(["user", index + 1]);
       setDecision(null);
-    }, 340);
+    }, 240);
   };
 
   return { query, onDecision, decision };

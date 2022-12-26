@@ -18,8 +18,8 @@ module.exports = {
         },
       },
       animation: {
-        like: "like 0.4s ease-in",
-        dislike: "dislike 0.4s ease-in",
+        like: "like 0.3s ease-in",
+        dislike: "dislike 0.3s ease-in",
         enter: "enter 0.2s ease-in",
       },
     },

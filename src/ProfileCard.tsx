@@ -1,3 +1,4 @@
+import Loading from "./components/Loading";
 import { DecisionBar } from "./DecisionBar";
 import { useProfile } from "./queries/use-profile";
 
@@ -23,6 +24,8 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
 
   const data = query.data;
 
+  const loading = !data;
+
   return (
     <div
       style={style}
@@ -34,10 +37,18 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
         className="object-cover min-h-[332px] w-full rounded-md shadow-md"
       />
       <div className="text-lg py-2">
-        {data?.name.first || "..."}, {data?.dob.age || "..."}
+        {loading ? (
+          <Loading className="w-1/3" />
+        ) : (
+          `${data?.name.first}, ${data?.dob.age}`
+        )}
       </div>
       <div className="text-sm text-slate-600">
-        {data?.location.city || "..."}, {data?.location.country || "..."}
+        {loading ? (
+          <Loading className="w-1/2" />
+        ) : (
+          `${data?.location.city}, ${data?.location.country}`
+        )}
       </div>
       <DecisionBar
         disabled={query.isFetching}
