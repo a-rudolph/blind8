@@ -1,3 +1,4 @@
+import ImageWithPlaceholder from "./components/ImageWithPlaceholder";
 import Loading from "./components/Loading";
 import { DecisionBar } from "./DecisionBar";
 import { useProfile } from "./queries/use-profile";
@@ -31,10 +32,12 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
       style={style}
       className={"card".concat(" ", className, " ", animation)}
     >
-      <img
+      <ImageWithPlaceholder
+        height="332px"
+        width="100%"
         src={data?.picture.large}
         loading={isFirst ? "eager" : "lazy"}
-        className="object-cover min-h-[332px] w-full rounded-md shadow-md"
+        className="object-cover w-full h-full rounded-md shadow-md"
       />
       <div className="text-lg py-2">
         {loading ? (
