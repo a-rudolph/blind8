@@ -57,15 +57,7 @@ export const ProfileCard: React.FC<{
           `${data?.location.city}, ${data?.location.country}`
         )}
       </div>
-      <DecisionBar
-        disabled={query.isFetching}
-        onLike={() => {
-          onDecision("like");
-        }}
-        onDislike={() => {
-          onDecision("dislike");
-        }}
-      />
+      <DecisionBar disabled={query.isFetching} onDecision={onDecision} />
     </div>
   );
 };

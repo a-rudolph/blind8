@@ -1,22 +1,21 @@
 import { FaCheck } from "react-icons/fa";
 
 const DecisionBar: React.FC<{
-  onLike: VoidFunction;
-  onDislike: VoidFunction;
+  onDecision: (decision: "like" | "dislike") => void;
   disabled: boolean;
-}> = ({ onLike, onDislike, disabled }) => {
+}> = ({ onDecision, disabled }) => {
   return (
     <div className="flex gap-6 m-4 justify-center">
       <button
         disabled={disabled}
-        onClick={onDislike}
+        onClick={() => onDecision("dislike")}
         className="btn text-2xl h-16 w-16"
       >
         ✖️
       </button>
       <button
         disabled={disabled}
-        onClick={onLike}
+        onClick={() => onDecision("like")}
         className="btn btn-primary text-xl h-16 w-16"
       >
         <FaCheck />
