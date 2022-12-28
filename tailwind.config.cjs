@@ -13,6 +13,7 @@ module.exports = {
           1: "#1e293b",
           2: "#64748b",
           3: "#cbd5e1",
+          4: "#e2e8f0",
         },
       },
       keyframes: {

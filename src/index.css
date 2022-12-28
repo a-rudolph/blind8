@@ -10,11 +10,16 @@
 .btn {
   @apply bg-white hover:bg-white/80 shadow-md text-mono-1 font-bold py-2 px-4 rounded-full
           flex items-center justify-center
-          border border-mono-3/50;
+          border border-mono-3/50
+          transition-all;
 }
 
 .btn-primary {
   @apply shadow-primary-2/70 bg-primary-1 hover:bg-primary-1/80 text-white border-white/30 border;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:text-mono-1/80 text-mono-1 border-none shadow-none;
 }
 
 .loading {
