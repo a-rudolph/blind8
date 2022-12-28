@@ -1,4 +1,4 @@
-import { userSchema } from "../schemas/user";
+import { userSchema } from "@/schemas/user";
 import { useQuery, useQueryClient } from "react-query";
 import { useState } from "react";
 

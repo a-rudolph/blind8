@@ -1,8 +1,8 @@
-import ImageWithPlaceholder from "./ImageWithPlaceholder";
-import Loading from "./Loading";
-import { DecisionBar } from "./DecisionBar";
-import { useProfile } from "../queries/use-profile";
-import { cx } from "../utils/classes";
+import ImageWithPlaceholder from "@/components/ImageWithPlaceholder";
+import Loading from "@/components/Loading";
+import { DecisionBar } from "@/components/DecisionBar";
+import { useProfile } from "@/queries/use-profile";
+import { cx } from "@/utils/classes";
 
 const animations = {
   like: "animate-like",

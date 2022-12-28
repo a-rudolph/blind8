@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState } from "react";
-import Magazine from "./components/Magazine";
+import Magazine from "@/components/Magazine";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
