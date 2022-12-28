@@ -8,10 +8,10 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <main className="min-h-screen overflow-x-hidden flex flex-col w-full bg-gradient-to-b from-transparent to-fuchsia-100 text-slate-800">
+      <main className="min-h-screen overflow-x-hidden flex flex-col w-full bg-gradient-to-b from-transparent to-primary-5 text-mono-1">
         <div className="max-w-lg flex flex-col flex-grow">
           <div className="p-4 py-6 text-xl font-bold">
-            blin<span className="text-fuchsia-500">d8</span>
+            blin<span className="text-primary-1">d8</span>
           </div>
           <div className="px-4 flex-1">
             <div className="flex flex-col relative justify-center items-center h-full">

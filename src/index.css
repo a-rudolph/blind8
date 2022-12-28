@@ -4,19 +4,20 @@
 
 .card {
   @apply bg-white shadow-lg rounded-lg overflow-hidden
-          p-3 w-full border-slate-200/50 border;
+          p-3 w-full border-mono-3/50 border;
 }
 
 .btn {
-  @apply bg-white hover:bg-white/80 shadow-md text-slate-800 font-bold py-2 px-4 rounded-full
-          flex items-center justify-center;
+  @apply bg-white hover:bg-white/80 shadow-md text-mono-1 font-bold py-2 px-4 rounded-full
+          flex items-center justify-center
+          border border-mono-3/50;
 }
 
 .btn-primary {
-  @apply shadow-fuchsia-400/70 bg-fuchsia-500 hover:bg-fuchsia-500/80 text-white border-white/30 border;
+  @apply shadow-primary-2/70 bg-primary-1 hover:bg-primary-1/80 text-white border-white/30 border;
 }
 
 .loading {
-  @apply bg-slate-300 shadow-md text-slate-300 px-4 rounded-md;
+  @apply bg-mono-3 text-mono-3 px-4 rounded-md;
   @apply animate-pulse;
 }

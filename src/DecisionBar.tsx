@@ -8,7 +8,7 @@ export const DecisionBar: React.FC<{
       <button
         disabled={disabled}
         onClick={onDislike}
-        className="btn text-xl h-16 w-16 border border-slate-200/50"
+        className="btn text-xl h-16 w-16"
       >
         ✖️
       </button>

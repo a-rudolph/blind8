@@ -24,9 +24,7 @@ const ImageWithPlaceholder: React.FC<
 };
 
 const ImageLoadingPlaceholder: React.FC = () => {
-  return (
-    <div className="w-full h-full bg-gray-500 animate-pulse rounded-md shadow-md absolute" />
-  );
+  return <div className="w-full h-full loading absolute" />;
 };
 
 export default ImageWithPlaceholder;

@@ -2,6 +2,7 @@ import ImageWithPlaceholder from "./components/ImageWithPlaceholder";
 import Loading from "./components/Loading";
 import { DecisionBar } from "./DecisionBar";
 import { useProfile } from "./queries/use-profile";
+import { cx } from "./utils/classes";
 
 const animations = {
   like: "animate-like",
@@ -28,10 +29,7 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
   const loading = !data;
 
   return (
-    <div
-      style={style}
-      className={"card".concat(" ", className, " ", animation)}
-    >
+    <div style={style} className={cx("card", className, animation)}>
       <ImageWithPlaceholder
         height="332px"
         width="100%"
@@ -46,7 +44,7 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
           `${data?.name.first}, ${data?.dob.age}`
         )}
       </div>
-      <div className="text-sm text-slate-600">
+      <div className="text-sm text-mono-2">
         {loading ? (
           <Loading className="w-1/2" />
         ) : (
