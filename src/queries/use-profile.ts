@@ -1,18 +1,20 @@
 import { userSchema } from "@/schemas/user";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { useState } from "react";
 
-export const useProfile = ({ index }: { index: number }) => {
+export const useProfile = ({
+  key,
+  shiftProfiles,
+}: {
+  key: number;
+  shiftProfiles: VoidFunction;
+}) => {
   const [decision, setDecision] = useState<"like" | "dislike" | null>(null);
 
-  const queryClient = useQueryClient();
-
   const query = useQuery(
-    ["user", index],
+    ["user", key],
     async () => {
-      if (index > 1) return null;
-
-      const res = await fetch("https://blind8-three.vercel.app/api/v1/profile");
+      const res = await fetch("https://blind8-three.vercel.app/api/v2/profile");
       const data = await res.json();
 
       const user = userSchema.parse(data.data);
@@ -26,17 +28,9 @@ export const useProfile = ({ index }: { index: number }) => {
 
   const onDecision = (decision: "like" | "dislike") => {
     setDecision(decision);
-    const next = queryClient.getQueryData(["user", index + 1]);
-
-    if (!next) {
-      return;
-    }
 
     setTimeout(() => {
-      queryClient.setQueryData(["user", index], next);
-      queryClient.setQueryData(["user", index + 1], null);
-      queryClient.invalidateQueries(["user", index + 1]);
-      setDecision(null);
+      shiftProfiles();
     }, 240);
   };
 

@@ -1,6 +1,6 @@
 import ImageWithPlaceholder from "@/components/ImageWithPlaceholder";
 import Loading from "@/components/Loading";
-import { DecisionBar } from "@/components/DecisionBar";
+import DecisionBar from "@/components/DecisionBar";
 import { useProfile } from "@/queries/use-profile";
 import { cx } from "@/utils/classes";
 
@@ -9,18 +9,24 @@ const animations = {
   dislike: "animate-dislike",
 } as const;
 
-export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
-  const { query, onDecision, decision } = useProfile({ index });
+export const ProfileCard: React.FC<{
+  index: number;
+  shiftProfiles: VoidFunction;
+  id: number;
+}> = ({ index = 0, shiftProfiles, id: key }) => {
+  const { query, onDecision, decision } = useProfile({
+    key,
+    shiftProfiles,
+  });
 
   const isFirst = !index;
 
-  const className = isFirst ? "relative" : "absolute top-0";
-  const animation = decision ? animations[decision] : "animate-enter";
+  const animation = decision
+    ? animations[decision]
+    : "transition-all duration-300";
 
   const style = {
-    transform: isFirst
-      ? "none"
-      : `translateY(${index * 40}px) scale(${1 - index * 0.1})`,
+    transform: `translateY(${index * 40}px) scale(${1 - index * 0.1})`,
     zIndex: 5 - index,
   } satisfies React.CSSProperties;
 
@@ -29,7 +35,7 @@ export const ProfileCard: React.FC<{ index?: number }> = ({ index = 0 }) => {
   const loading = !data;
 
   return (
-    <div style={style} className={cx("card", className, animation)}>
+    <div style={style} className={cx("card absolute top-0", animation)}>
       <ImageWithPlaceholder
         height="332px"
         width="100%"

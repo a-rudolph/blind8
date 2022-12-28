@@ -1,4 +1,4 @@
-export const DecisionBar: React.FC<{
+const DecisionBar: React.FC<{
   onLike: VoidFunction;
   onDislike: VoidFunction;
   disabled: boolean;
@@ -22,3 +22,5 @@ export const DecisionBar: React.FC<{
     </div>
   );
 };
+
+export default DecisionBar;
