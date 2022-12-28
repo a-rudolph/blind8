@@ -1,3 +1,5 @@
+import { FaCheck } from "react-icons/fa";
+
 const DecisionBar: React.FC<{
   onLike: VoidFunction;
   onDislike: VoidFunction;
@@ -8,7 +10,7 @@ const DecisionBar: React.FC<{
       <button
         disabled={disabled}
         onClick={onDislike}
-        className="btn text-xl h-16 w-16"
+        className="btn text-2xl h-16 w-16"
       >
         ✖️
       </button>
@@ -17,7 +19,7 @@ const DecisionBar: React.FC<{
         onClick={onLike}
         className="btn btn-primary text-xl h-16 w-16"
       >
-        🤍
+        <FaCheck />
       </button>
     </div>
   );
