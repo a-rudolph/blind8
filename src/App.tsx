@@ -1,7 +1,7 @@
-import ProfileCard from "./ProfileCard";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState } from "react";
+import Magazine from "./components/Magazine";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -14,11 +14,7 @@ function App() {
             blin<span className="text-primary-1">d8</span>
           </div>
           <div className="px-4 flex-1">
-            <div className="flex flex-col relative justify-center items-center h-full">
-              <ProfileCard />
-              <ProfileCard index={1} />
-              <ProfileCard index={2} />
-            </div>
+            <Magazine />
           </div>
           <div className="p-4 shadow-sm">bottom nav</div>
         </div>
