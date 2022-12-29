@@ -7,7 +7,7 @@ const Header: React.FC = () => {
         blin<span className="text-primary-1">d8</span>
       </div>
       <div className="flex gap-4">
-        <button className="btn btn-ghost text-xl">
+        <button className="btn btn-ghost text-2xl">
           <GoSettings />
         </button>
       </div>

@@ -16,8 +16,8 @@ function App() {
           <div className="px-4 flex-1">
             <Magazine />
           </div>
-          <BottomNav />
         </div>
+        <BottomNav />
       </main>
       <ReactQueryDevtools toggleButtonProps={{ className: "opacity-40" }} />
     </QueryClientProvider>

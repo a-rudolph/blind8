@@ -8,18 +8,21 @@
 }
 
 .btn {
-  @apply bg-white hover:bg-white/80 shadow-md text-mono-1 font-bold py-2 px-4 rounded-full
+  @apply bg-white shadow-md text-mono-1 font-bold py-2 px-4 rounded-full
+          enabled:hover:opacity-80
           flex items-center justify-center
           border border-mono-3/50
+          disabled:opacity-50 disabled:cursor-not-allowed
           transition-all;
 }
 
 .btn-primary {
-  @apply shadow-primary-2/70 bg-primary-1 hover:bg-primary-1/80 text-white border-white/30 border;
+  @apply shadow-primary-2/70 bg-primary-1 
+         text-white border-white/30 border;
 }
 
 .btn-ghost {
-  @apply bg-transparent hover:text-mono-1/80 text-mono-1 border-none shadow-none;
+  @apply bg-transparent border-none shadow-none;
 }
 
 .loading {
