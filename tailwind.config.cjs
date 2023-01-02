@@ -9,6 +9,9 @@ module.exports = {
           2: "#e879f9",
           5: "#fae8ff",
         },
+        secondary: {
+          1: "#2563eb",
+        },
         mono: {
           1: "#1e293b",
           2: "#64748b",
