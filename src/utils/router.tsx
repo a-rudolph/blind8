@@ -9,7 +9,7 @@ import React, {
   useContext,
 } from "react";
 
-export type Pages = "chats" | "explore" | "profile" | "settings";
+export type Pages = "chats" | "explore" | "profile" | "settings" | "convo";
 
 export type PageContextType = {
   current: Pages;
@@ -62,6 +62,8 @@ export const Router = () => {
   switch (current) {
     case "chats":
       return wrapper(lazy(() => import("@/pages/chats")));
+    case "convo":
+      return wrapper(lazy(() => import("@/pages/convo")));
     case "explore":
       return wrapper(lazy(() => import("@/components/Magazine")));
     case "profile":

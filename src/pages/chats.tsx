@@ -1,4 +1,5 @@
 import { lorem } from "@/utils/dummy";
+import { usePageContext } from "@/utils/router";
 
 const ChatsPage = () => {
   return (
@@ -13,8 +14,15 @@ const ChatsPage = () => {
 };
 
 const ConversationItem: React.FC<{ unread: boolean }> = ({ unread }) => {
+  const { setPage } = usePageContext();
+
   return (
-    <div className="flex gap-3 py-2 border-b-mono-3 border-b">
+    <button
+      onClick={() => {
+        setPage("convo");
+      }}
+      className="flex gap-3 py-2 border-b-mono-3 border-b"
+    >
       <div
         className="relative rounded-full font-semibold min-w-[44px] min-h-[44px] bg-mono-3 text-white text-lg text-center"
         style={{ lineHeight: 2.5 }}
@@ -25,12 +33,12 @@ const ConversationItem: React.FC<{ unread: boolean }> = ({ unread }) => {
         )}
       </div>
       <div className="overflow-hidden">
-        <div className="font-semibold">name</div>
+        <div className="font-semibold text-left">name</div>
         <div className="whitespace-nowrap text-mono-2 text-ellipsis overflow-hidden">
           {lorem.generateSentences(1)}
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
