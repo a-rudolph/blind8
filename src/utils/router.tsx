@@ -17,7 +17,7 @@ export type PageContextType = {
 };
 
 const PageContext = createContext<PageContextType>({
-  current: "explore",
+  current: "chats",
   setPage: () => {},
 });
 
@@ -28,7 +28,7 @@ export const usePageContext = () => {
 export const PageProvider: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const [current, setCurrent] = React.useState<Pages>("explore");
+  const [current, setCurrent] = React.useState<Pages>("chats");
 
   const setPage = (page: Pages) => {
     setCurrent(page);
@@ -61,7 +61,7 @@ export const Router = () => {
 
   switch (current) {
     case "chats":
-      return wrapper(ChatsPage);
+      return wrapper(lazy(() => import("@/pages/chats")));
     case "explore":
       return wrapper(lazy(() => import("@/components/Magazine")));
     case "profile":
@@ -75,10 +75,6 @@ export const Router = () => {
 
 const NotFound = () => {
   return <div>404</div>;
-};
-
-const ChatsPage = () => {
-  return <div>chats page</div>;
 };
 
 const ProfilePage = () => {
