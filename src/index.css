@@ -33,6 +33,7 @@
 .grad-mask {
   position: relative;
 }
+
 .grad-mask:after {
   content: "";
   position: absolute;
@@ -41,4 +42,15 @@
   height: 50%;
   width: 100%;
   @apply bg-gradient-to-b from-transparent to-white;
+}
+
+.w-extra {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  margin-right: -16px;
+  @apply px-4;
+}
+
+.h-page {
+  height: calc(100vh - 72px - 64px);
 }
