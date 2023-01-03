@@ -1,39 +1,37 @@
 import { cx } from "@/utils/classes";
-import { useState } from "react";
+import { usePageContext } from "@/utils/router";
 import { FaHeartbeat, FaUserCircle } from "react-icons/fa";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
-type Pages = "chats" | "explore" | "profile";
-
 const BottomNav: React.FC = () => {
-  const [selected, setSelected] = useState<Pages>("explore");
+  const { setPage, current } = usePageContext();
 
   return (
     <nav className="h-16 flex justify-between bg-white shadow-md items-center px-4 py-4">
       <div className="flex justify-around w-full">
         <NavButton
           icon={<HiChatBubbleLeftRight />}
-          selected={selected === "chats"}
+          selected={current === "chats"}
           onClick={() => {
-            setSelected("chats");
+            setPage("chats");
           }}
           selectedClass="text-secondary-1"
         />
         <Divider />
         <NavButton
           icon={<FaHeartbeat />}
-          selected={selected === "explore"}
+          selected={current === "explore"}
           onClick={() => {
-            setSelected("explore");
+            setPage("explore");
           }}
           selectedClass="text-primary-1"
         />
         <Divider />
         <NavButton
           icon={<FaUserCircle />}
-          selected={selected === "profile"}
+          selected={current === "profile"}
           onClick={() => {
-            setSelected("profile");
+            setPage("profile");
           }}
           selectedClass="text-mono-2"
         />
