@@ -32,8 +32,6 @@ export const ProfileCard: React.FC<{
 
   const data = query.data;
 
-  const loading = !data;
-
   return (
     <div style={style} className={cx("card absolute top-0", animation)}>
       <ImageWithPlaceholder
@@ -44,20 +42,28 @@ export const ProfileCard: React.FC<{
         className="object-cover w-full h-full rounded-md shadow-md"
       />
       <div className="text-lg py-2">
-        {loading ? (
-          <Loading className="w-1/3" />
-        ) : (
-          `${data?.name.first}, ${data?.dob.age}`
-        )}
+        <Loading className="w-1/3" data={data}>
+          {(data) => {
+            return (
+              <>
+                <span className="font-semibold">{data.name.first}, </span>
+                <span>{data.dob.age}</span>
+              </>
+            );
+          }}
+        </Loading>
       </div>
       <div className="text-sm text-mono-2">
-        {loading ? (
-          <Loading className="w-1/2" />
-        ) : (
-          `${data?.location.city}, ${data?.location.country}`
-        )}
+        <Loading className="w-1/2" data={data}>
+          {(data) => {
+            return `${data.location.city}, ${data.location.country}`;
+          }}
+        </Loading>
       </div>
-      <DecisionBar disabled={query.isFetching} onDecision={onDecision} />
+      <DecisionBar
+        disabled={query.isFetching || !isFirst}
+        onDecision={onDecision}
+      />
     </div>
   );
 };
