@@ -4,7 +4,7 @@
 
 .card {
   @apply bg-white shadow-lg rounded-lg overflow-hidden
-          p-3 w-full border-mono-3/50 border;
+          p-3 w-full;
 }
 
 .btn {
@@ -28,4 +28,17 @@
 .loading {
   @apply bg-mono-3 text-mono-3 px-4 rounded-md;
   @apply animate-pulse;
+}
+
+.grad-mask {
+  position: relative;
+}
+.grad-mask:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  @apply bg-gradient-to-b from-transparent to-white;
 }

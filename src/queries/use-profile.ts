@@ -1,6 +1,7 @@
 import { userSchema } from "@/schemas/user";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { generateBio } from "@/utils/dummy";
 
 export const useProfile = ({
   key,
@@ -17,7 +18,7 @@ export const useProfile = ({
       const res = await fetch("https://blind8-three.vercel.app/api/v2/profile");
       const data = await res.json();
 
-      const user = userSchema.parse(data.data);
+      const user = userSchema.parse({ ...data.data, bio: generateBio() });
 
       return user;
     },

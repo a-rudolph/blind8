@@ -6,6 +6,7 @@ export const userSchema = z.object({
     date: z.string(),
     age: z.number(),
   }),
+  bio: z.string(),
   email: z.string(),
   gender: z.string(),
   id: z.object({

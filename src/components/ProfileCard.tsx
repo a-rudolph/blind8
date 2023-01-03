@@ -10,9 +10,9 @@ const animations = {
 } as const;
 
 export const ProfileCard: React.FC<{
+  id: number;
   index: number;
   shiftProfiles: VoidFunction;
-  id: number;
 }> = ({ index = 0, shiftProfiles, id: key }) => {
   const { query, onDecision, decision } = useProfile({
     key,
@@ -26,7 +26,7 @@ export const ProfileCard: React.FC<{
     : "transition-all duration-300";
 
   const style = {
-    transform: `translateY(${index * 40}px) scale(${1 - index * 0.1})`,
+    transform: `translateY(${index * 48}px) scale(${1 - index * 0.1})`,
     zIndex: 5 - index,
   } satisfies React.CSSProperties;
 
@@ -47,17 +47,18 @@ export const ProfileCard: React.FC<{
             return (
               <>
                 <span className="font-semibold">{data.name.first}, </span>
-                <span>{data.dob.age}</span>
+                <span>{data.dob.age} </span>
+                <span className="text-sm text-mono-2">
+                  {data.location.city}
+                </span>
               </>
             );
           }}
         </Loading>
       </div>
-      <div className="text-sm text-mono-2">
-        <Loading className="w-1/2" data={data}>
-          {(data) => {
-            return `${data.location.city}, ${data.location.country}`;
-          }}
+      <div className="text-sm text-mono-2 h-16 overflow-hidden grad-mask">
+        <Loading data={data}>
+          {(data) => <div className="">{data.bio}</div>}
         </Loading>
       </div>
       <DecisionBar
